@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+
+<launch>
+	
+	<arg name="world_path" default="worlds/empty.world"/>
+	
+	<include file="$(find agv_simulation)/launch/start_gazebo.launch" >
+		<arg name="world_path" value="$(arg world_path)"/>
+	</include>
+
+	<include file="$(find agv_simulation)/launch/spawn_agv.launch"/>
+
+</launch>
