@@ -4,66 +4,66 @@
   <xacro:include filename="$(find robot_description)/urdf/robot.gazebo.xacro" />
 
   <joint name="joint_camera_1" type="fixed">
-    <parent link="base_link_2"/>
+    <parent link="base_link"/>
     <child link="camera_1"/>
     <origin rpy="0 1.57 0" xyz="0 -0.127 0.0367"/>
   </joint>
 
   <joint name="joint_lidar" type="fixed">
-    <parent link="base_link_2"/>
+    <parent link="base_link"/>
     <child link="lidar"/>
     <origin rpy="0 0 -1.57" xyz="-0.0005 -0.23 0.109"/>
   </joint>
 
   <joint name="joint_lifting_tray" type="prismatic">
-    <parent link="base_link_2"/>
+    <parent link="base_link"/>
     <child link="lifting_tray"/>
     <origin rpy="0 0 0" xyz="0 0 0.1318"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="0" upper="0.04" velocity="1"/>
   </joint>
 
-  <joint name="joint_wheel_front_left" type="fixed">
-    <parent link="base_link_2"/>
-    <child link="wheel_front_left"/>
+  <joint name="joint_wheel_front_right" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_front_right"/>
     <origin rpy="0 1.57 0" xyz="0.193 -0.176 0.0508"/>
   </joint>
 
-  <joint name="joint_wheel_rear_left" type="fixed">
-    <parent link="base_link_2"/>
-    <child link="wheel_rear_left"/>
+  <joint name="joint_wheel_rear_right" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_rear_right"/>
     <origin rpy="0 1.57 0" xyz="0.193 0.176 0.0508"/>
   </joint>
 
-  <joint name="joint_wheel_front_right" type="fixed">
-    <parent link="base_link_2"/>
-    <child link="wheel_front_right"/>
+  <joint name="joint_wheel_front_left" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_front_left"/>
     <origin rpy="0 1.57 0" xyz="-0.214 -0.176 0.0508"/>
   </joint>
 
-  <joint name="joint_wheel_rear_right" type="fixed">
-    <parent link="base_link_2"/>
-    <child link="wheel_rear_right"/>
+  <joint name="joint_wheel_rear_left" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_rear_left"/>
     <origin rpy="0 1.57 0" xyz="-0.214 0.176 0.0508"/>
   </joint>
   
-  <joint name="joint_left_wheel" type="revolute">
-    <parent link="base_link_2"/>
-    <child link="left_wheel"/>
+  <joint name="joint_right_wheel" type="revolute">
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
     <origin rpy="0 1.57 0" xyz="0.193 0 0.0507"/>
     <axis xyz="0 0 1"/>
     <limit effort="-1.0" lower="-1e+16" upper="1e+16" velocity="-1.0"/>
   </joint>
 
-  <joint name="joint_right_wheel" type="revolute">
-    <parent link="base_link_2"/>
-    <child link="right_wheel"/>
+  <joint name="joint_left_wheel" type="revolute">
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
     <origin rpy="0 1.57 0" xyz="-0.214 0 0.0507"/>
     <axis xyz="0 0 1"/>
     <limit effort="-1.0" lower="-1e+16" upper="1e+16" velocity="-1.0"/>
   </joint>
 
-  <gazebo reference="base_link_2">
+  <gazebo reference="base_link">
     <selfCollide>true</selfCollide>
     <mu1 value="0.3"/>
     <mu2 value="0.3"/>
@@ -73,89 +73,21 @@
   </gazebo>
 
   <link name="base_link">
-  </link>
-
-  <joint name="base_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="base_link_2"/>
-    <origin rpy="0 0 1.57" xyz="0 0 0"/>
-    <axis xyz="0 0 1"/>
-  </joint>
-
-  <link name="base_link_2">
     <inertial>
       <mass value="15"/>
       <origin rpy="0  0  3.14" xyz="0  0  0.0118"/>
       <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
     </inertial>
-    <collision name="carcaca_collision">
+    <collision name="base_link_collision">
       <origin rpy="0  0  3.14" xyz="0  0  0.0118"/>
       <geometry>
         <mesh filename="package://robot_description/models/laser_robot/meshes/carcaca.dae" scale="1 1 1"/>
       </geometry>
     </collision>
-    <visual name="carcaca_visual">
+    <visual name="base_link_visual">
       <origin rpy="0  0  3.14" xyz="0  0  0.0118"/>
       <geometry>
         <mesh filename="package://robot_description/models/laser_robot/meshes/carcaca.dae" scale="1 1 1"/>
-      </geometry>
-    </visual>
-  </link>
-
-  <gazebo reference="wheel_front_left">
-    <selfCollide>true</selfCollide>
-    <mu1 value="0.09"/>
-    <mu2 value="0.09"/>
-    <kp value="10000000.0" />
-    <kd value="10000" />
-    <fdir1 value="0 0 0"/>
-  </gazebo>
-
-  <link name="wheel_front_left">
-    <inertial>
-      <mass value="0.01"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
-    </inertial>
-    <collision name="wheel_front_left_collision">
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robot_description/models/laser_robot/omni_wheel/meshes/roda_omni.obj" scale="1 1 1"/>
-      </geometry>
-    </collision>
-    <visual name="wheel_front_left_visual">
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robot_description/models/laser_robot/omni_wheel/meshes/roda_omni.obj" scale="1 1 1"/>
-      </geometry>
-    </visual>
-  </link>
-
-  <gazebo reference="wheel_rear_left">
-    <selfCollide>true</selfCollide>
-    <mu1 value="0.09"/>
-    <mu2 value="0.09"/>
-    <kp value="10000000.0" />
-    <kd value="10000" />
-    <fdir1 value="0 0 0"/>
-  </gazebo>
-
-  <link name="wheel_rear_left">
-    <inertial>
-      <mass value="0.01"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
-    </inertial>
-    <collision name="wheel_rear_left_collision">
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robot_description/models/laser_robot/omni_wheel/meshes/roda_omni.obj" scale="1 1 1"/>
-      </geometry>
-    </collision>
-    <visual name="wheel_rear_left_visual">
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robot_description/models/laser_robot/omni_wheel/meshes/roda_omni.obj" scale="1 1 1"/>
       </geometry>
     </visual>
   </link>
@@ -218,6 +150,64 @@
     </visual>
   </link>
 
+  <gazebo reference="wheel_front_left">
+    <selfCollide>true</selfCollide>
+    <mu1 value="0.09"/>
+    <mu2 value="0.09"/>
+    <kp value="10000000.0" />
+    <kd value="10000" />
+    <fdir1 value="0 0 0"/>
+  </gazebo>
+
+  <link name="wheel_front_left">
+    <inertial>
+      <mass value="0.01"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+    </inertial>
+    <collision name="wheel_front_left_collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_description/models/laser_robot/omni_wheel/meshes/roda_omni.obj" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <visual name="wheel_front_left_visual">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_description/models/laser_robot/omni_wheel/meshes/roda_omni.obj" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <gazebo reference="wheel_rear_left">
+    <selfCollide>true</selfCollide>
+    <mu1 value="0.09"/>
+    <mu2 value="0.09"/>
+    <kp value="10000000.0" />
+    <kd value="10000" />
+    <fdir1 value="0 0 0"/>
+  </gazebo>
+
+  <link name="wheel_rear_left">
+    <inertial>
+      <mass value="0.01"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+    </inertial>
+    <collision name="wheel_rear_left_collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_description/models/laser_robot/omni_wheel/meshes/roda_omni.obj" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <visual name="wheel_rear_left_visual">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_description/models/laser_robot/omni_wheel/meshes/roda_omni.obj" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+
 
   <gazebo reference="lifting_tray">
     <selfCollide>true</selfCollide>
@@ -268,36 +258,6 @@
     </visual>
   </link>
 
-  <gazebo reference="left_wheel">
-    <selfCollide>false</selfCollide>
-    <mu1 value="100"/>
-    <mu2 value="50"/>
-    <kp value="10000000.0" />
-    <kd value="1000" />
-    <fdir1 value="0 0 0"/>
-  </gazebo>
-
-  <link name="left_wheel">
-    <inertial>
-      <mass value="1"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
-    </inertial>
-    <collision name="left_wheel_collision">
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robot_description/models/laser_robot/wheel/meshes/roda.obj" scale="1 1 1"/>
-      </geometry>
-    </collision>
-    <visual name="left_wheel_visual">
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <mesh filename="package://robot_description/models/laser_robot/wheel/meshes/roda.obj" scale="1 1 1"/>
-      </geometry>
-    </visual>
-  </link>
-
-
   <gazebo reference="right_wheel">
     <selfCollide>false</selfCollide>
     <mu1 value="100"/>
@@ -327,6 +287,36 @@
     </visual>
   </link>
 
+
+  <gazebo reference="left_wheel">
+    <selfCollide>false</selfCollide>
+    <mu1 value="100"/>
+    <mu2 value="50"/>
+    <kp value="10000000.0" />
+    <kd value="1000" />
+    <fdir1 value="0 0 0"/>
+  </gazebo>
+
+  <link name="left_wheel">
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+    </inertial>
+    <collision name="left_wheel_collision">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_description/models/laser_robot/wheel/meshes/roda.obj" scale="1 1 1"/>
+      </geometry>
+    </collision>
+    <visual name="left_wheel_visual">
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot_description/models/laser_robot/wheel/meshes/roda.obj" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+
   <link name="lidar">
     <inertial>
       <mass value="0.1"/>
@@ -346,6 +336,191 @@
       </geometry>
     </visual>
   </link>
+
+<!-- Swivel -->
+  <link name="swivel">
+  <inertial>
+    <mass value="0.1"/> 
+    <origin xyz="0 0 0"/>
+    <inertia ixx="0.01" ixy="0" ixz="0"
+         iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry name="pioneer_geom">
+    <mesh filename="package://warehouse_simulation/meshes/swivel.stl"/>
+    </geometry>
+    <material name="swivel">
+    <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+  </visual>
+  </link>
+  <gazebo reference="swivel">
+  <material value="Gazebo/Black"/>
+  </gazebo>
+
+  <joint name="base_swivel_joint" type="continuous">
+  <origin xyz="-0.185 0 0.055" rpy="0 0 0"/>
+  <axis xyz="0 0 1"/>
+    <limit effort="100" velocity="100" k_velocity="0" />
+    <joint_properties damping="0.0" friction="0.0" />
+  <parent link="base_link"/>
+  <child link="swivel"/>
+  </joint>
+
+  <!-- Center Wheel + Hubcap -->
+  <link name="center_hubcap">
+    <inertial>
+    <mass value="0.01"/>  
+    <origin xyz="0 0 0"/>
+    <inertia ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
+         iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943"/>
+    </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry name="pioneer_geom">
+    <mesh filename="package://warehouse_simulation/meshes/center_hubcap.stl"/>
+    </geometry>
+    <material name="swivel">
+    <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+  </visual>
+  </link>
+  <gazebo reference="center_hubcap">
+  <material value="Gazebo/Black"/>
+  </gazebo>
+
+  <joint name="swivel_hubcap_joint" type="continuous">
+  <origin xyz="-0.026 0 -0.016" rpy="0 0 0"/>
+  <axis xyz="0 1 0"/>
+  <anchor xyz="0 0 0"/>
+    <limit effort="100" velocity="100" k_velocity="0" />
+    <joint_properties damping="0.0" friction="0.0" />
+  <parent link="swivel"/>
+  <child link="center_wheel"/>
+  </joint>
+
+  <link name="center_wheel">
+  <inertial>
+    <mass value="0.1"/> 
+    <origin xyz="0 0 0"/>
+    <inertia ixx="0.012411765597" ixy="-0.000711733678" ixz="0.00050272983"
+         iyy="0.015218160428" iyz="-0.000004273467" izz="0.011763977943"/>
+    </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry name="pioneer_geom">
+    <mesh filename="package://warehouse_simulation/meshes/center_wheel.stl"/>
+    </geometry>
+    <material name="WheelBlack">
+    <color rgba="0.117 0.117 0.117 1"/>
+    </material>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="${-3.1415927/2.0} 0 0"/>
+    <geometry>
+    <cylinder radius="0.0375" length="0.0314"/>
+    </geometry>
+  </collision>
+  </link>
+  <gazebo reference="center_wheel">
+  <material value="Gazebo/Black"/>
+  </gazebo>
+
+  <joint name="center_wheel_joint" type="fixed">
+  <origin xyz="-0.0035 0 -0.001" rpy="0 0 0"/>
+  <parent link="center_wheel"/>
+  <child link="center_hubcap"/>
+  </joint>
+
+  <xacro:p3dx_wheel suffix="left" parent="base_link" reflect="1"/>
+  <xacro:p3dx_wheel suffix="right" parent="base_link" reflect="-1"/>
+
+  <!-- Front + Back Sonar -->
+  <link name="front_sonar">
+  <inertial>
+    <mass value="0.0001"/>  
+    <origin xyz="0 0 0"/>
+    <inertia ixx="1" ixy="0" ixz="0"
+         iyy="1" iyz="0" izz="1"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry name="pioneer_geom">
+    <mesh filename="package://warehouse_simulation/meshes/front_sonar.stl"/>
+    </geometry>
+    <material name="SonarYellow">
+    <color rgba="0.715 0.583 0.210 1.0"/>
+    </material>
+  </visual>
+  </link>
+  <gazebo reference="front_sonar">
+  <material value="Gazebo/Yellow"/>
+  </gazebo>
+
+  <joint name="base_front_joint" type="fixed">
+  <origin xyz="-0.198 0 0.208" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="front_sonar"/>
+  </joint>
+
+  <link name="back_sonar">
+  <inertial>
+    <mass value="0.0001"/>  
+    <origin xyz="0 0 0"/>
+    <inertia ixx="1" ixy="0" ixz="0"
+         iyy="1" iyz="0" izz="1"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry name="pioneer_geom">
+    <mesh filename="package://warehouse_simulation/meshes/back_sonar.stl"/>
+    </geometry>
+    <material name="SonarYellow">
+    <color rgba="0.715 0.583 0.210 1.0"/>
+    </material>
+  </visual>
+  </link>
+
+  <gazebo reference="back_sonar">
+  <material value="Gazebo/Yellow"/>
+  </gazebo>
+
+  <joint name="base_back_joint" type="fixed">
+  <origin xyz="0.109 0 0.209" rpy="0 0 0"/>
+  <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
+  <parent link="base_link"/>
+  <child link="back_sonar"/>
+  </joint>
+
+
+  <!-- Imu -->
+  <link name="imu_link"/>
+  <joint name="base_to_imu" type="fixed">
+    <axis rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.2"/>
+  </joint>
+  <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>
+      <topic>imu</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>imu_link</bodyName>
+        <updateRateHZ>20.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu_link</frameName>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
 
   <gazebo reference="laser">
     <material>Gazebo/FlatBlack</material>
@@ -381,33 +556,11 @@
   </gazebo>
 
   <joint name="scan_joint" type="fixed">
-    <parent link="base_link_2"/>
+    <parent link="base_link"/>
     <child link="laser"/>
-    <origin xyz="0 0 0.280" rpy="0 0 -1.570"/>
+    <origin xyz="0 0 0.30" rpy="0 0 0"/>
   </joint>
 
- <link name="laser">
-    <visual>
-      <origin xyz="0 0 0.0" rpy="0 0 0"/>
-      <geometry>
-        <mesh filename="package://warehouse_simulation/meshes/lds.stl" scale="0.001 0.001 0.001"/>
-      </geometry>
-      <material name="dark"/>
-    </visual>
+  
 
-    <collision>
-      <origin xyz="0.015 0 -0.0065" rpy="0 0 0"/>
-      <geometry>
-        <cylinder length="0.0315" radius="0.055"/>
-      </geometry>
-    </collision>
-
-    <inertial>
-      <mass value="0.114" />
-      <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0"
-               iyy="0.001" iyz="0.0"
-               izz="0.001" />
-    </inertial>
-  </link> 
 </robot>

@@ -13,7 +13,7 @@
 
   <link name="base_link">
     <visual>
-      <origin xyz="-0.064 0 0.0" rpy="0 0 0"/>
+      <origin xyz="0.0 0 0.0" rpy="0 0 0"/>
       <geometry>
         <!-- <mesh filename="package://turtlebot3_description/meshes/bases/waffle_pi_base.stl" scale="0.001 0.001 0.001"/> -->
        <mesh filename="package://robot_description/models/laser_robot/meshes/carcaca.dae" scale="0.9 0.9 0.9"/>
@@ -22,7 +22,7 @@
     </visual>
 
     <collision>
-      <origin xyz="-0.064 0 0.047" rpy="0 0 0"/>
+      <origin xyz="0.0 0 0.047" rpy="0 0 0"/>
       <geometry>
         <box size="0.266 0.266 0.094"/>
       </geometry>
@@ -30,35 +30,37 @@
 
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <mass value="1.3729096e+00"/>
-      <inertia ixx="8.7002718e-03" ixy="-4.7576583e-05" ixz="1.1160499e-04"
-               iyy="8.6195418e-03" iyz="-3.5422299e-06"
-               izz="1.4612727e-02" />
+      <mass value="16"/>
+      <inertia ixx="1" ixy="0" ixz="0"
+               iyy="1" iyz="0"
+               izz="1" />
     </inertial>
   </link>
 
   <!-- <joint name="joint_lifting_tray" type="prismatic">
     <parent link="base_link"/>
     <child link="lifting_tray"/>
-    <origin rpy="0 0 0" xyz="-0.065 0 0.1"/>
+    <origin rpy="0 0 0" xyz="0.0 0 0.105"/>
     <axis xyz="0 0 1"/>
     <limit effort="100" lower="0" upper="0.04" velocity="1"/>
-  </joint>
+  </joint> -->
 
-  <gazebo reference="lifting_tray">
+  <!-- <gazebo reference="lifting_tray">
     <selfCollide>true</selfCollide>
     <mu1 value="0.1"/>
     <mu2 value="0.1"/>
     <kp value="10000000.0" />
     <kd value="10000" />
     <fdir1 value="0 0 0"/>
-  </gazebo>
+  </gazebo> -->
 
-  <link name="lifting_tray">
+  <!-- <link name="lifting_tray">
     <inertial>
-      <mass value="0.1"/>
+      <mass value="2.8498940e-02"/>
       <origin rpy="0  0  0" xyz="0 0 0"/>
-      <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+      <inertia ixx="1.1175580e-05" ixy="-4.2369783e-11" ixz="-5.9381719e-09"
+               iyy="1.1192413e-05" iyz="-1.4400107e-11"
+               izz="2.0712558e-05"/>
     </inertial>
     <collision name="lifting_tray_collision">
       <origin rpy="0  0  0" xyz="0 0 0"/>
@@ -72,14 +74,24 @@
         <mesh filename="package://robot_description/models/laser_robot/meshes/lifting.dae" scale="0.9 0.9 0.9"/>
       </geometry>
     </visual>
-  </link> -->
+  </link>  -->
 
   <joint name="wheel_left_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_left_link"/>
     <origin xyz="0.0 0.144 0.023" rpy="-1.57 0 0"/>
     <axis xyz="0 0 1"/>
+    <limit effort="-1.0" lower="-1e+16" upper="1e+16" velocity="-1.0"/>
   </joint>
+
+  <gazebo reference="wheel_left_link">
+    <selfCollide>false</selfCollide>
+    <mu1 value="100"/>
+    <mu2 value="50"/>
+    <kp value="10000000.0" />
+    <kd value="1000" />
+    <fdir1 value="0 0 0"/>
+  </gazebo>
 
   <link name="wheel_left_link">
     <visual>
@@ -98,6 +110,11 @@
     </collision>
 
     <inertial>
+      <!-- <origin xyz="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="1" ixy="0" ixz="0"
+               iyy="1" iyz="0"
+               izz="1" /> -->
       <origin xyz="0 0 0" />
       <mass value="2.8498940e-02" />
       <inertia ixx="1.1175580e-05" ixy="-4.2369783e-11" ixz="-5.9381719e-09"
@@ -106,11 +123,22 @@
       </inertial>
   </link>
 
+  <gazebo reference="right_wheel">
+    <selfCollide>false</selfCollide>
+    <mu1 value="100"/>
+    <mu2 value="50"/>
+    <kp value="10000000.0" />
+    <kd value="1000" />
+    <fdir1 value="0 0 0"/>
+  </gazebo>
+
+
   <joint name="wheel_right_joint" type="continuous">
     <parent link="base_link"/>
     <child link="wheel_right_link"/>
     <origin xyz="0.0 -0.144 0.023" rpy="-1.57 0 0"/>
     <axis xyz="0 0 1"/>
+    <limit effort="-1.0" lower="-1e+16" upper="1e+16" velocity="-1.0"/>
   </joint>
 
   <link name="wheel_right_link">
@@ -138,11 +166,75 @@
       </inertial>
   </link>
 
+  <!-- <joint name="wheel_front_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_front_link"/>
+    <origin xyz="0.1 0 0.023" rpy="-1.57 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="wheel_front_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.57 0 0"/>
+      <geometry>
+        <mesh filename="package://turtlebot3_description/meshes/wheels/right_tire.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.018" radius="0.033"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" />
+      <mass value="2.8498940e-02" />
+      <inertia ixx="1.1175580e-05" ixy="-4.2369783e-11" ixz="-5.9381719e-09"
+               iyy="1.1192413e-05" iyz="-1.4400107e-11"
+               izz="2.0712558e-05" />
+      </inertial>
+  </link> -->
+
   <joint name="caster_back_right_joint" type="fixed">
     <parent link="base_link"/>
     <child link="caster_back_right_link"/>
     <origin xyz="-0.177 -0.064 -0.004" rpy="-1.57 0 0"/>
   </joint>
+
+  <!-- <joint name="wheel_behind_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_behind_link"/>
+    <origin xyz="-0.25 0.0 0.023" rpy="-1.57 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="wheel_behind_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.57 0 0"/>
+      <geometry>
+        <mesh filename="package://turtlebot3_description/meshes/wheels/right_tire.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="dark"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder length="0.018" radius="0.033"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" />
+      <mass value="2.8498940e-02" />
+      <inertia ixx="1.1175580e-05" ixy="-4.2369783e-11" ixz="-5.9381719e-09"
+               iyy="1.1192413e-05" iyz="-1.4400107e-11"
+               izz="2.0712558e-05" />
+      </inertial>
+  </link> -->
 
   <link name="caster_back_right_link">
     <collision>
@@ -270,39 +362,4 @@
   </joint>
   <link name="camera_rgb_optical_frame"/>
   
-  <gazebo reference="laser">
-    <material>Gazebo/FlatBlack</material>
-    <sensor type="ray" name="lds_lfcd_sensor">
-      <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
-      <update_rate>5</update_rate>
-      <ray>
-        <scan>
-          <horizontal>
-            <samples>360</samples>
-            <resolution>1</resolution>
-            <min_angle>0.0</min_angle>
-            <max_angle>6.28319</max_angle>
-          </horizontal>
-        </scan>
-        <range>
-          <min>0.120</min>
-          <max>10.0</max>
-          <resolution>0.050</resolution>
-        </range>
-        <noise>
-          <type>gaussian</type>
-          <mean>0.0</mean>
-          <stddev>0.01</stddev>
-        </noise>
-      </ray>
-      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
-        <topicName>scan</topicName>
-        <frameName>laser</frameName>
-      </plugin>
-    </sensor>
-  </gazebo>
-
-
-
 </robot>

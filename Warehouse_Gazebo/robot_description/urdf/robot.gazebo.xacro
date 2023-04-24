@@ -10,7 +10,7 @@
             <odometryTopic>odom</odometryTopic> 
             <odometryFrame>odom</odometryFrame>
             <odometryRate>50.0</odometryRate>
-            <robotBaseFrame>carcaca</robotBaseFrame>
+            <robotBaseFrame>base_link</robotBaseFrame>
             </plugin>
         </gazebo>
     </xacro:macro>
@@ -66,7 +66,7 @@
         <odometryFrame>odom</odometryFrame>
 
         <!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
-        <robotBaseFrame>carcaca</robotBaseFrame>
+        <robotBaseFrame>base_link</robotBaseFrame>
 
         <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
         <odometrySource>1</odometrySource>
@@ -88,7 +88,7 @@
     <gazebo>
         <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
         <alwaysOn>true</alwaysOn>
-        <bodyName>carcaca</bodyName>
+        <bodyName>base_link</bodyName>
         <topicName>imu</topicName>
         <serviceName>imu_service</serviceName>
         <gaussianNoise>0.0</gaussianNoise>

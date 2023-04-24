@@ -1,7 +1,11 @@
 
-robot_radius: 0.25  
+# robot_radius: 0.25  
 
 map_type: voxel
+
+footprint: [[-0.205, -0.155], [-0.205, 0.155], [0.077, 0.155], [0.077, -0.155]]
+update_frequency: 10.0
+publish_frequency: 10.0
 
 voxel_layer:
   enabled:              true
