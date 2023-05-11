@@ -49,3 +49,17 @@ export TURTLEBOT3_MODEL=waffle_pi
 #robot moi
 roslaunch turtlebot3_gazebo robot_turtle.launch
 
+#gui toa do
+rostopic pub /move_base_simple/goal geometry_msgs/PoseStamped '{header: {stamp: now, frame_id: "map"}, pose: {position: {x: 1.0, y: 0.0, z: 0.0}, orientation: {w: 1.0}}}'
+
+rostopic pub /move_base_simple/goal geometry_msgs/PoseStamped '{header: {stamp: now, frame_id: "map"}, pose: {position: {x: 4.0, y: 0.0, z: 0.0}, orientation: {z: 0.7, w: 0.7}}}'
+
+#bat khay hang
+#nang:
+rostopic pub -1 /my_robot/joint1_position_controller/command std_msgs/Float64 "data: 1"
+#ha: 
+rostopic pub -1 /my_robot/joint1_position_controller/command std_msgs/Float64 "data: 0"
+
+
+
+

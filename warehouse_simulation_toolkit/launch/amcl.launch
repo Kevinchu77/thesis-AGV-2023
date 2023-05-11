@@ -1,10 +1,10 @@
 <launch>
 
   <!-- Arguments -->
-  <!-- <arg name="scan_topic"     default="scan"/>
+  <arg name="scan_topic"     default="scan"/>
   <arg name="initial_pose_x" default="0.0"/>
   <arg name="initial_pose_y" default="0.0"/>
-  <arg name="initial_pose_a" default="0.0"/> -->
+  <arg name="initial_pose_a" default="0.0"/>
 
 	<node pkg="amcl" type="amcl" name="amcl">
 		<!-- Publish scans from best pose at a max of 10 Hz -->

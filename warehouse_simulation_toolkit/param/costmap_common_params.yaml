@@ -1,9 +1,9 @@
 
-# robot_radius: 0.25  
+# robot_radius: 0.18
 
 map_type: voxel
 
-footprint: [[-0.205, -0.155], [-0.205, 0.155], [0.077, 0.155], [0.077, -0.155]]
+footprint: [[-0.179, -0.20], [-0.179, 0.179], [0.179, 0.179], [0.179, -0.20]]
 update_frequency: 10.0
 publish_frequency: 10.0
 
@@ -17,8 +17,8 @@ voxel_layer:
   mark_threshold:       0
   combination_method:   1
   track_unknown_space:  true    
-  obstacle_range: 2.5
-  raytrace_range: 3.0
+  obstacle_range: 2.0
+  raytrace_range: 2.6
   publish_voxel_map: true
   observation_sources:  scan 
   scan:

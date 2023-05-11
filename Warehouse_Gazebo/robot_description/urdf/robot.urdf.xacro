@@ -63,14 +63,14 @@
     <limit effort="-1.0" lower="-1e+16" upper="1e+16" velocity="-1.0"/>
   </joint>
 
-  <gazebo reference="base_link_2">
+  <!-- <gazebo reference="base_link_2">
     <selfCollide>true</selfCollide>
     <mu1 value="0.3"/>
     <mu2 value="0.3"/>
     <kp value="10000000.0" />
     <kd value="1000" />
     <fdir1 value="0 0 0"/>
-  </gazebo>
+  </gazebo> -->
 
   <link name="base_link">
   </link>
@@ -91,25 +91,25 @@
     <collision name="carcaca_collision">
       <origin rpy="0  0  3.14" xyz="0  0  0.0118"/>
       <geometry>
-        <mesh filename="package://robot_description/models/laser_robot/meshes/carcaca.dae" scale="1 1 1"/>
+        <mesh filename="package://robot_description/models/laser_robot/meshes/carcaca.dae" scale="0.7 0.7 0.7"/>
       </geometry>
     </collision>
     <visual name="carcaca_visual">
       <origin rpy="0  0  3.14" xyz="0  0  0.0118"/>
       <geometry>
-        <mesh filename="package://robot_description/models/laser_robot/meshes/carcaca.dae" scale="1 1 1"/>
+        <mesh filename="package://robot_description/models/laser_robot/meshes/carcaca.dae" scale="0.99 0.99 0.99"/>
       </geometry>
     </visual>
   </link>
 
-  <gazebo reference="wheel_front_left">
+  <!-- <gazebo reference="wheel_front_left">
     <selfCollide>true</selfCollide>
     <mu1 value="0.09"/>
     <mu2 value="0.09"/>
     <kp value="10000000.0" />
     <kd value="10000" />
     <fdir1 value="0 0 0"/>
-  </gazebo>
+  </gazebo> -->
 
   <link name="wheel_front_left">
     <inertial>
@@ -131,14 +131,14 @@
     </visual>
   </link>
 
-  <gazebo reference="wheel_rear_left">
+  <!-- <gazebo reference="wheel_rear_left">
     <selfCollide>true</selfCollide>
     <mu1 value="0.09"/>
     <mu2 value="0.09"/>
     <kp value="10000000.0" />
     <kd value="10000" />
     <fdir1 value="0 0 0"/>
-  </gazebo>
+  </gazebo> -->
 
   <link name="wheel_rear_left">
     <inertial>
@@ -160,14 +160,14 @@
     </visual>
   </link>
 
-  <gazebo reference="wheel_front_right">
+  <!-- <gazebo reference="wheel_front_right">
     <selfCollide>true</selfCollide>
     <mu1 value="0.09"/>
     <mu2 value="0.09"/>
     <kp value="10000000.0" />
     <kd value="10000" />
     <fdir1 value="0 0 0"/>
-  </gazebo>
+  </gazebo> -->
 
   <link name="wheel_front_right">
     <inertial>
@@ -189,14 +189,14 @@
     </visual>
   </link>
 
-  <gazebo reference="wheel_rear_right">
+  <!-- <gazebo reference="wheel_rear_right">
     <selfCollide>true</selfCollide>
     <mu1 value="0.09"/>
     <mu2 value="0.09"/>
     <kp value="10000000.0" />
     <kd value="10000" />
     <fdir1 value="0 0 0"/>
-  </gazebo>
+  </gazebo> -->
 
   <link name="wheel_rear_right">
     <inertial>
@@ -219,14 +219,14 @@
   </link>
 
 
-  <gazebo reference="lifting_tray">
+  <!-- <gazebo reference="lifting_tray">
     <selfCollide>true</selfCollide>
     <mu1 value="0.1"/>
     <mu2 value="0.1"/>
     <kp value="10000000.0" />
     <kd value="10000" />
     <fdir1 value="0 0 0"/>
-  </gazebo>
+  </gazebo> -->
 
   <link name="lifting_tray">
     <inertial>
@@ -237,7 +237,7 @@
     <collision name="lifting_tray_collision">
       <origin rpy="0  0  0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot_description/models/laser_robot/meshes/lifting.dae" scale="1 1 1"/>
+        <mesh filename="package://robot_description/models/laser_robot/meshes/lifting.dae" scale="1.0 1.0 1.0"/>
       </geometry>
     </collision>
     <visual name="lifting_tray_visual">
@@ -268,14 +268,14 @@
     </visual>
   </link>
 
-  <gazebo reference="left_wheel">
+  <!-- <gazebo reference="left_wheel">
     <selfCollide>false</selfCollide>
     <mu1 value="100"/>
     <mu2 value="50"/>
     <kp value="10000000.0" />
     <kd value="1000" />
     <fdir1 value="0 0 0"/>
-  </gazebo>
+  </gazebo> -->
 
   <link name="left_wheel">
     <inertial>
@@ -298,14 +298,14 @@
   </link>
 
 
-  <gazebo reference="right_wheel">
+  <!-- <gazebo reference="right_wheel">
     <selfCollide>false</selfCollide>
     <mu1 value="100"/>
     <mu2 value="50"/>
     <kp value="10000000.0" />
     <kd value="1000" />
     <fdir1 value="0 0 0"/>
-  </gazebo>
+  </gazebo> -->
 
   <link name="right_wheel">
     <inertial>
@@ -395,12 +395,12 @@
       <material name="dark"/>
     </visual>
 
-    <collision>
+    <!-- <collision>
       <origin xyz="0.015 0 -0.0065" rpy="0 0 0"/>
       <geometry>
         <cylinder length="0.0315" radius="0.055"/>
       </geometry>
-    </collision>
+    </collision> -->
 
     <inertial>
       <mass value="0.114" />

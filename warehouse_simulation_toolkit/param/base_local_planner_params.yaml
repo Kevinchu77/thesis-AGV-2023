@@ -1,18 +1,18 @@
 
 TrajectoryPlannerROS:
   #Set the acceleration limits of the robot
-  acc_lim_x: 0.5
+  acc_lim_x: 1.0
   acc_lim_y: 0.0
-  acc_lim_theta: 0.3
+  acc_lim_theta: 0.6  
 
   #Set the velocity limits of the robot
-  max_vel_x: 0.5
+  max_vel_x: 0.2
   min_vel_x: 0.05
   max_vel_y: 0
   max_vel_y: 0
-  max_vel_theta: 0.3
-  min_vel_theta: -0.3
-  min_in_place_vel_theta: 0.1
+  max_vel_theta: 1.0
+  min_vel_theta: -1.0
+  min_in_place_vel_theta: 1.0
 
   #The velocity the robot will command when trying to escape from a stuck situation
   escape_vel: -0.2
@@ -24,12 +24,12 @@ TrajectoryPlannerROS:
 
   #Set the tolerance on achieving a goal
   xy_goal_tolerance: 0.2
-  yaw_goal_tolerance: 0.12
+  yaw_goal_tolerance: 0.05
 
   #We'll configure how long and with what granularity we'll forward simulate trajectories
-  sim_time: 1.5 
-  sim_granularity: 0.025
-  vx_samples: 10
+  sim_time: 0.8
+  sim_granularity: 0.05
+  vx_samples: 18
   vtheta_samples: 20
 
   #Parameters for scoring trajectories
@@ -40,14 +40,14 @@ TrajectoryPlannerROS:
   heading_scoring: false
 
   #We'll use the Dynamic Window Approach to control instead of Trajectory Rollout for this example
-  dwa: false
+  # dwa: false
 
   #How far the robot must travel before oscillation flags are reset
-  oscillation_reset_dist: 0.05
+  # oscillation_reset_dist: 0.05
 
   #Eat up the plan as the robot moves along it
-  prune_plan: true
-  meter_scoring: false
+  # prune_plan: true
+  # meter_scoring: false
 
 # Global Planner Parameters
 BaseGlobalPlanner:
